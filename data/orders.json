@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1783069733148",
+    "itemId": "1783069665690",
+    "itemName": "Premium Chicken Meat",
+    "qty": 2.0,
+    "amount": 350.0,
+    "total": 700.0,
+    "buyerId": "1783069593339",
+    "buyerName": "Bob Johnson",
+    "vendorId": "1783069634398",
+    "vendorName": "Fresh Meat Shop",
+    "paymentMethod": "cod",
+    "paymentStatus": "pending",
+    "status": "confirmed",
+    "createdAt": "2026-07-03T14:38:53.148892"
+  }
+]

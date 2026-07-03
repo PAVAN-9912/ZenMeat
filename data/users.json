@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1783069539593",
+    "name": "Alice Smith",
+    "email": "user1783069539285@example.com",
+    "phone": "9876543210",
+    "password": "password123",
+    "role": "customer",
+    "createdAt": "2026-07-03T14:35:39.593665"
+  },
+  {
+    "id": "1783069593339",
+    "name": "Bob Johnson",
+    "email": "user1783069593020@example.com",
+    "phone": "8765432109",
+    "password": "mypassword123",
+    "role": "customer",
+    "createdAt": "2026-07-03T14:36:33.339910"
+  },
+  {
+    "id": "1783069634398",
+    "name": "Fresh Meat Shop",
+    "email": "vendor1783069634081@example.com",
+    "phone": "9999999999",
+    "password": "vendorpass123",
+    "role": "vendor",
+    "createdAt": "2026-07-03T14:37:14.398046"
+  }
+]

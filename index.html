@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d94b3d">
+  <title>ZenMeat — Fresh Local Meat</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="backend-adapter.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-logo">ZM</div>
+
+      <div>
+        <h1>ZenMeat</h1>
+        <p>Fresh meat from local shops</p>
+      </div>
+    </div>
+
+    <button id="menuBtn" class="menu-btn hidden" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+
+  <!-- MAIN APP -->
+  <main class="app-main">
+
+    <!-- AUTH PAGE -->
+    <section id="authCard" class="auth-screen">
+
+      <div class="auth-hero">
+        <div class="hero-icon">🥩</div>
+        <h2>Fresh. Local. Simple.</h2>
+        <p>Order quality meat directly from trusted local vendors.</p>
+      </div>
+
+      <div class="auth-box">
+
+        <h3>Welcome to ZenMeat</h3>
+        <p class="muted">Create an account or login to continue</p>
+
+        <div class="input-group">
+          <label>Full Name</label>
+          <input id="name" type="text" placeholder="Enter your full name">
+        </div>
+
+        <div class="input-group">
+          <label>Email Address</label>
+          <input id="email" type="email" placeholder="Enter your email">
+        </div>
+
+        <div class="input-group">
+          <label>Phone Number</label>
+          <input id="phone" type="tel" placeholder="Enter phone number">
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input id="password" type="password" placeholder="Enter password">
+        </div>
+
+        <div class="input-group">
+          <label>Account Type</label>
+          <select id="role">
+            <option value="customer">Customer</option>
+            <option value="vendor">Vendor</option>
+          </select>
+        </div>
+
+        <div class="auth-actions">
+          <button id="signupBtn" class="btn primary">Create Account</button>
+          <button id="loginBtn" class="btn secondary">Login</button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CUSTOMER HOME -->
+    <section id="browsePanel" class="page hidden">
+
+      <div class="welcome-banner">
+        <div>
+          <p class="eyebrow">WELCOME TO ZENMEAT</p>
+          <h2>What would you like today?</h2>
+          <p>Browse fresh products from local vendors.</p>
+        </div>
+
+        <div class="banner-icon">🛍️</div>
+      </div>
+
+      <div class="search-box">
+        <span>🔍</span>
+        <input id="searchInput" type="search"
+               placeholder="Search meat or available shops...">
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <h2>Fresh Today</h2>
+          <p>Available products from local vendors</p>
+        </div>
+      </div>
+
+      <div id="itemGrid" class="product-grid">
+        <div class="empty-state">Loading products...</div>
+      </div>
+
+    </section>
+
+
+    <!-- CUSTOMER ORDERS -->
+    <section id="ordersPanel" class="page hidden">
+
+      <div class="page-title">
+        <button class="backBtn icon-back">←</button>
+
+        <div>
+          <h2>My Orders</h2>
+          <p>Track all your current and previous orders</p>
+        </div>
+      </div>
+
+      <div id="myOrders" class="order-list">
+        <div class="empty-state">No orders yet.</div>
+      </div>
+
+    </section>
+
+
+    <!-- NEARBY PAGE -->
+    <section id="mapPanel" class="page hidden">
+
+      <div class="page-title">
+        <button class="backBtn icon-back">←</button>
+
+        <div>
+          <h2>Nearby Shops</h2>
+          <p>Find local ZenMeat vendors near you</p>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <div id="miniMap" class="map-placeholder">
+          <div>
+            <div class="map-pin">📍</div>
+            <h3>Nearby Shops</h3>
+            <p>Google Maps will appear here when a valid API key is configured.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- VENDOR DASHBOARD -->
+    <section id="vendorPanel" class="page hidden">
+
+      <div class="vendor-banner">
+        <div>
+          <p class="eyebrow">VENDOR DASHBOARD</p>
+          <h2>Manage your ZenMeat shop</h2>
+          <p>Add products and manage incoming customer orders.</p>
+        </div>
+
+        <div class="banner-icon">🏪</div>
+      </div>
+
+
+      <!-- ADD PRODUCT -->
+      <div class="section-card">
+
+        <div class="section-heading">
+          <div>
+            <h2>Add Product</h2>
+            <p>Add fresh items for your customers</p>
+          </div>
+        </div>
+
+        <div class="vendor-form">
+
+          <div class="input-group">
+            <label>Item Name</label>
+            <input id="itemName" type="text"
+                   placeholder="Example: Fresh Chicken">
+          </div>
+
+          <div class="two-column">
+
+            <div class="input-group">
+              <label>Price per kg (₹)</label>
+              <input id="price" type="number"
+                     min="1" step="0.01"
+                     placeholder="250">
+            </div>
+
+            <div class="input-group">
+              <label>Stock (kg)</label>
+              <input id="stock" type="number"
+                     min="0.1" step="0.1"
+                     placeholder="10">
+            </div>
+
+          </div>
+
+          <button id="addItemBtn" class="btn primary full-btn">
+            ＋ Add Product
+          </button>
+
+        </div>
+      </div>
+
+
+      <!-- VENDOR ORDERS -->
+      <div class="section-card">
+
+        <div class="section-heading">
+          <div>
+            <h2>Incoming Orders</h2>
+            <p>Update each order through its delivery stages</p>
+          </div>
+        </div>
+
+        <div id="vendorOrders" class="order-list">
+          <div class="empty-state">No orders yet.</div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- CUSTOMER BOTTOM NAVIGATION -->
+  <nav id="customerNav" class="bottom-nav hidden">
+
+    <button id="navBrowse" class="nav-btn active">
+      <span>🏠</span>
+      <small>Home</small>
+    </button>
+
+    <button id="navOrders" class="nav-btn">
+      <span>🧾</span>
+      <small>Orders</small>
+    </button>
+
+    <button id="navMap" class="nav-btn">
+      <span>📍</span>
+      <small>Nearby</small>
+    </button>
+
+  </nav>
+
+
+  <!-- MENU OVERLAY -->
+  <div id="menuOverlay" class="menu-overlay hidden"></div>
+
+
+  <!-- HAMBURGER MENU -->
+  <aside id="menuSheet" class="side-menu hidden">
+
+    <div class="menu-top">
+
+      <div>
+        <p class="menu-label">ZENMEAT ACCOUNT</p>
+        <h3 id="menuUserName">Welcome</h3>
+        <p id="menuUserRole">User</p>
+      </div>
+
+      <button id="menuClose" class="close-btn">✕</button>
+
+    </div>
+
+    <div id="customerMenuOptions" class="menu-options hidden">
+
+      <button class="menu-item" data-page="browse">
+        <span>🏠</span>
+        <div>
+          <strong>Browse Products</strong>
+          <small>Shop fresh products</small>
+        </div>
+      </button>
+
+      <button class="menu-item" data-page="orders">
+        <span>🧾</span>
+        <div>
+          <strong>My Orders</strong>
+          <small>Track your orders</small>
+        </div>
+      </button>
+
+      <button class="menu-item" data-page="map">
+        <span>📍</span>
+        <div>
+          <strong>Nearby Shops</strong>
+          <small>Find vendors near you</small>
+        </div>
+      </button>
+
+    </div>
+
+    <div id="vendorMenuOptions" class="menu-options hidden">
+
+      <button class="menu-item" data-page="vendor">
+        <span>🏪</span>
+        <div>
+          <strong>Vendor Dashboard</strong>
+          <small>Products and incoming orders</small>
+        </div>
+      </button>
+
+    </div>
+
+    <button id="logoutBtn" class="logout-btn">
+      <span>↪</span>
+      Logout
+    </button>
+
+  </aside>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
