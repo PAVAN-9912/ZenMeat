@@ -259,12 +259,12 @@ class ZenMeatHandler(http.server.BaseHTTPRequestHandler):
         })
 
 if __name__ == '__main__':
-    print(f"🚀 ZenMeat backend running on http://10.131.173.110:{PORT}")
-    print(f"📁 Data stored in {DATA_DIR}")
+    print(f"ZenMeat backend running on http://10.131.173.110:{PORT}")
+    print(f"Data stored in {DATA_DIR}")
     
     with socketserver.TCPServer(("", PORT), ZenMeatHandler) as httpd:
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\n✋ Backend stopped")
+            print("\nBackend stopped")
             httpd.shutdown()
